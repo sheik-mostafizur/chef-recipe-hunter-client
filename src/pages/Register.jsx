@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "../components/Navbar";
 import {Link} from "react-router-dom";
+import {uesAuthContext} from "../context/AuthContext";
+import {updateProfile} from "@firebase/auth";
+import {auth} from "../firebase/firebase.config";
 
 const Register = () => {
-  const error = "";
+  const {createUser} = uesAuthContext();
+  const [error, setError] = useState("");
+
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -11,6 +16,25 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo_url = form.photo_url.value;
+
+    setError("");
+    if (password.length < 6)
+      return setError("The password is less than 6 characters");
+
+    createUser(email, password)
+      .then(() => {
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo_url,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+            form.reset();
+          })
+          .catch((error) => setError(error.message));
+      })
+      .catch((error) => setError(error.message));
   };
 
   return (
