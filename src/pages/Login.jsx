@@ -4,7 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {uesAuthContext} from "../context/AuthContext";
 
 const Login = () => {
-  const {logInUser} = uesAuthContext();
+  const {logInUser, logInUserWithGoogle} = uesAuthContext();
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -16,6 +16,16 @@ const Login = () => {
 
     setError("");
     logInUser(email, password)
+      .then(() => {
+        setError("");
+        form.reset();
+        navigate("/");
+      })
+      .catch((error) => setError(error.message));
+  };
+
+  const handleLoginWithGoogle = () => {
+    logInUserWithGoogle()
       .then(() => {
         setError("");
         navigate("/");
@@ -32,6 +42,7 @@ const Login = () => {
           <h2 className="font-bold text-2xl">Log In Your Account</h2>
           <div className="mt-4 flex items-center justify-center">
             <button
+              onClick={handleLoginWithGoogle}
               type="button"
               className="py-1 ps-2 pe-4 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
               <img
