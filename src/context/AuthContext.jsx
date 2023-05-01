@@ -6,7 +6,11 @@ import {
   signOut,
 } from "@firebase/auth";
 import {createContext, useContext, useEffect, useState} from "react";
-import {auth, googleProvider} from "../firebase/firebase.config";
+import {
+  auth,
+  gitHubProvider,
+  googleProvider,
+} from "../firebase/firebase.config";
 
 const UserContext = createContext({});
 
@@ -27,6 +31,9 @@ const AuthContext = ({children}) => {
   const logInUserWithGoogle = async () =>
     await signInWithPopup(auth, googleProvider);
 
+  const logInUserWithGitHub = async () =>
+    await signInWithPopup(auth, gitHubProvider);
+
   const logOutUser = async () => await signOut(auth);
 
   useEffect(() => {
@@ -43,6 +50,7 @@ const AuthContext = ({children}) => {
     createUser,
     logInUser,
     logInUserWithGoogle,
+    logInUserWithGitHub,
     logOutUser,
   };
 
