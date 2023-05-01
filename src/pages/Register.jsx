@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Navbar from "../components/Navbar";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {uesAuthContext} from "../context/AuthContext";
 import {updateProfile} from "@firebase/auth";
 import {auth} from "../firebase/firebase.config";
@@ -8,6 +8,7 @@ import {auth} from "../firebase/firebase.config";
 const Register = () => {
   const {createUser} = uesAuthContext();
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -30,6 +31,7 @@ const Register = () => {
           .then(() => {
             // Profile updated!
             // ...
+            navigate("/");
             form.reset();
           })
           .catch((error) => setError(error.message));

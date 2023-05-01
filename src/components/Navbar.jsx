@@ -1,11 +1,18 @@
 import React, {useState} from "react";
 import Logo from "../assets/logo.png";
 import {Link, NavLink} from "react-router-dom";
-import { uesAuthContext } from "../context/AuthContext";
+import {uesAuthContext} from "../context/AuthContext";
+
 const Navbar = () => {
-  const {user} = uesAuthContext()
+  const {user, logOutUser} = uesAuthContext();
   const [toggleNav, setToggleNav] = useState(false);
-  
+
+  const handleLogout = () => {
+    logOutUser()
+      .then()
+      .catch((error) => alert(error.message));
+  };
+
   const navLinkStyle =
     "block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 md:dark:hover:text-primary dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
   const navLinkStyleActive =
@@ -21,12 +28,23 @@ const Navbar = () => {
           </span>
         </a>
         <div className="flex md:order-2">
-          
-          <Link
-            to="/login"
-            className="btn-primary">
-            Login
-          </Link>
+          {user && (
+            <img
+              className="w-12 h-12 me-3 shadow rounded-full border border-primary p-[5px]"
+              src={user?.photoURL}
+              alt={user?.displayName}
+              title={user?.displayName}
+            />
+          )}
+          {user ? (
+            <button onClick={handleLogout} className="btn-primary">
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="btn-primary">
+              Login
+            </Link>
+          )}
           <button
             onClick={() => setToggleNav(!toggleNav)}
             data-collapse-toggle="navbar-sticky"
