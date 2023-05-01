@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import Logo from "../assets/logo.png";
 import {Link, NavLink} from "react-router-dom";
+import { uesAuthContext } from "../context/AuthContext";
 const Navbar = () => {
+  const {user} = uesAuthContext()
   const [toggleNav, setToggleNav] = useState(false);
-
+  
   const navLinkStyle =
     "block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 md:dark:hover:text-primary dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
   const navLinkStyleActive =
@@ -19,9 +21,10 @@ const Navbar = () => {
           </span>
         </a>
         <div className="flex md:order-2">
+          
           <Link
             to="/login"
-            className="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-primary dark:hover:bg-primary dark:focus:ring-primary">
+            className="btn-primary">
             Login
           </Link>
           <button
