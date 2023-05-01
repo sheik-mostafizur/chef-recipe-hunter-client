@@ -30,7 +30,7 @@ const Navbar = () => {
         <div className="flex md:order-2">
           {user && (
             <img
-              className="w-12 h-12 me-3 shadow rounded-full border border-primary p-[5px]"
+              className="w-10 h-10 me-3 shadow rounded-full border border-primary p-[5px]"
               src={user?.photoURL}
               alt={user?.displayName}
               title={user?.displayName}

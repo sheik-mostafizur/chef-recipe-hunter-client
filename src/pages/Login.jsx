@@ -1,11 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "../components/Navbar";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {uesAuthContext} from "../context/AuthContext";
 
 const Login = () => {
-  const error = "";
+  const {logInUser} = uesAuthContext();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
   const handleLogin = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    setError("");
+    logInUser(email, password)
+      .then(() => {
+        setError("");
+        navigate("/");
+      })
+      .catch((error) => setError(error.message));
   };
 
   return (
@@ -52,6 +67,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                 placeholder="Enter your email"
                 required
@@ -65,6 +81,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                 placeholder="********"
                 required
