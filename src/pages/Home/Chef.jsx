@@ -3,21 +3,18 @@ import YearExperience from "../../assets/icons/chef-hat.png";
 import NumbersRecipes from "../../assets/icons/recipe-book.png";
 import Like from "../../assets/icons/heart.png";
 
-// -   Years of experience
+// eslint-disable-next-line react/prop-types
+const Chef = ({chefData}) => {
+  // eslint-disable-next-line react/prop-types
+  const {chef_picture, chef_name, years_of_experience, num_of_recipes, likes} =
+    chefData;
 
-// -   Numbers of recipes
-
-// -   Likes
-
-// -   View Recipes Button
-
-const Chef = () => {
   return (
     <div className="shadow rounded border border-primary px-6 py-8 space-y-5">
       <img
-        className="w-48 mx-auto rounded-full outline outline-4 outline-primary"
-        src="https://asiantv4u.com/wp-content/uploads/2021/10/chinese-chef-1.jpg.webp"
-        alt=""
+        className="w-48 h-48 mx-auto rounded-full outline outline-4 outline-primary"
+        src={chef_picture}
+        alt={chef_name}
       />
       <h3 className="font-bold text-2xl text-center">Martin Yan</h3>
       <div className="flex justify-between">
@@ -27,7 +24,7 @@ const Chef = () => {
             src={YearExperience}
             alt="Years of experience"
           />
-          <span>4</span> Years
+          <span>{years_of_experience}</span> Years
         </p>
         <p>
           <img
@@ -35,7 +32,7 @@ const Chef = () => {
             src={NumbersRecipes}
             alt="Numbers of recipes"
           />
-          <span>15</span> recipes
+          <span>{num_of_recipes}</span> recipes
         </p>
         <p>
           <img
@@ -43,7 +40,7 @@ const Chef = () => {
             src={Like}
             alt="Numbers of Likes"
           />
-          <span>15</span> Likes
+          <span>{likes}</span> Likes
         </p>
       </div>
       <button className="btn-primary w-full">View Recipes</button>
