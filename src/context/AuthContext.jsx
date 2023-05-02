@@ -14,8 +14,10 @@ import {
 
 const UserContext = createContext({});
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 export const uesAuthContext = () => useContext(UserContext);
 
+// eslint-disable-next-line react/prop-types
 const AuthContext = ({children}) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);

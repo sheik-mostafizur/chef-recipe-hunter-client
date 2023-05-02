@@ -6,7 +6,8 @@ import {updateProfile} from "@firebase/auth";
 import {auth} from "../firebase/firebase.config";
 
 const Register = () => {
-  const {createUser} = uesAuthContext();
+  const {createUser, logInUserWithGoogle, logInUserWithGitHub} =
+    uesAuthContext();
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -39,6 +40,23 @@ const Register = () => {
       .catch((error) => setError(error.message));
   };
 
+  const handleLoginWithGoogle = () => {
+    logInUserWithGoogle()
+      .then(() => {
+        setError("");
+        navigate("/");
+      })
+      .catch((error) => setError(error.message));
+  };
+  const handleLoginWithGitHub = () => {
+    logInUserWithGitHub()
+      .then(() => {
+        setError("");
+        navigate("/");
+      })
+      .catch((error) => setError(error.message));
+  };
+
   return (
     <>
       <Navbar />
@@ -48,6 +66,7 @@ const Register = () => {
           <h2 className="font-bold text-2xl">Register Your Account</h2>
           <div className="mt-4 flex items-center justify-center">
             <button
+              onClick={handleLoginWithGoogle}
               type="button"
               className="py-1 ps-2 pe-4 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
               <img
@@ -58,6 +77,7 @@ const Register = () => {
               Sign up with Google
             </button>
             <button
+              onClick={handleLoginWithGitHub}
               type="button"
               className="py-2 ps-2 pe-4 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
               <img
