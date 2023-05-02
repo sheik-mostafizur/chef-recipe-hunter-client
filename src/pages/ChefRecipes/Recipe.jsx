@@ -8,7 +8,7 @@ const Recipe = ({recipeData}) => {
     recipeData;
 
   const [isFavorite, setIsFavorite] = useState(false);
-  const notify = () => toast.success("Recipe Favorite added!");
+  const notify = () => toast.success("Recipe added!");
 
   const handleFavorite = () => {
     setIsFavorite(true);
