@@ -5,7 +5,7 @@ import Restaurant from "./Restaurant";
 
 const PopularRestaurants = () => {
   const {fetchedData: restaurantsData, loading} = useFetch(
-    "http://localhost:3000/popular-chines-restaurants"
+    "https://recipe-master-assignment.vercel.app/popular-chines-restaurants"
   );
 
   return (

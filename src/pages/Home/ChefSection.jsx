@@ -5,7 +5,7 @@ import useFetch from "./useFetch";
 
 const ChefSection = () => {
   const {fetchedData: chefData, loading} = useFetch(
-    "http://localhost:3000/chines-chef"
+    "https://recipe-master-assignment.vercel.app/chines-chef"
   );
 
   return (

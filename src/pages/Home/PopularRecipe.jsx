@@ -4,7 +4,7 @@ import useFetch from "./useFetch";
 
 const PopularRecipe = () => {
   const {fetchedData: recipeData, loading} = useFetch(
-    "http://localhost:3000/popular-chines-recipe"
+    "https://recipe-master-assignment.vercel.app/popular-chines-recipe"
   );
 
   return (

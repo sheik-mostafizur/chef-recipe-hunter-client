@@ -19,7 +19,7 @@ const Banner = () => {
             </p>
             <a
               href="#"
-              className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-primary focus:ring-4 focus:ring-primary dark:focus:ring-primary">
+              className="inline-flex items-center justify-center px-5 py-3 mr-3 mb-3 md:mb-0 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-primary focus:ring-4 focus:ring-primary dark:focus:ring-primary">
               Get started
               <svg
                 className="w-5 h-5 ml-2 -mr-1"
