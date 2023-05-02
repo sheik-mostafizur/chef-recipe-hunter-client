@@ -17,6 +17,7 @@ const Login = () => {
     const password = form.password.value;
 
     setError("");
+    // login using email and password
     logInUser(email, password)
       .then(() => {
         setError("");
@@ -26,6 +27,7 @@ const Login = () => {
       .catch((error) => setError(error.message));
   };
 
+  // google authentication handle
   const handleLoginWithGoogle = () => {
     logInUserWithGoogle()
       .then(() => {
@@ -34,6 +36,8 @@ const Login = () => {
       })
       .catch((error) => setError(error.message));
   };
+
+  // gitHub authentication handle
   const handleLoginWithGitHub = () => {
     logInUserWithGitHub()
       .then(() => {

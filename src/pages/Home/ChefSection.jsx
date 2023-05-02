@@ -14,6 +14,7 @@ const ChefSection = () => {
         Top Chines Chef
       </h2>
 
+      {/* if data is not loaded Spinner is running then show chef profile */}
       {loading ? (
         <LoaderSpinner />
       ) : (

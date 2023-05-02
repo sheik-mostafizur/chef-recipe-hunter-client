@@ -7,8 +7,10 @@ const Blog = () => {
   return (
     <div>
       <Navbar />
+
       <div className="max-w-screen-xl px-4 py-8 mx-auto">
         <div className="grid my-8 lg:my-16 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
+          {/* show blog data where 4 questions and answers and show blog page */}
           {blog_data &&
             blog_data.map(({id, question, answer}) => (
               <figure

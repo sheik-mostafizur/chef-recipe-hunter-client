@@ -24,8 +24,10 @@ const Register = () => {
     if (password.length < 6)
       return setError("The password is less than 6 characters");
 
+    // create user using email and password
     createUser(email, password)
       .then(() => {
+        // update user name and photoURL
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photo_url,
@@ -41,6 +43,7 @@ const Register = () => {
       .catch((error) => setError(error.message));
   };
 
+  //  google authentication handle
   const handleLoginWithGoogle = () => {
     logInUserWithGoogle()
       .then(() => {
@@ -49,6 +52,8 @@ const Register = () => {
       })
       .catch((error) => setError(error.message));
   };
+
+  // gitHub authentication handle
   const handleLoginWithGitHub = () => {
     logInUserWithGitHub()
       .then(() => {
@@ -168,7 +173,7 @@ const Register = () => {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };

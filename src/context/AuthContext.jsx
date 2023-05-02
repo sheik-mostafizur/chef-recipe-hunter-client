@@ -39,9 +39,11 @@ const AuthContext = ({children}) => {
 
   const logOutUser = async () => await signOut(auth);
 
+  // always check user is logged in or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (res) => {
       res ? setUser(res) : setUser(null);
+      // if user is logged in successfully the loading stopped
       setLoading(false);
     });
     return unsubscribe;

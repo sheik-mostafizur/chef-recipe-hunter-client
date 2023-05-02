@@ -12,6 +12,7 @@ const Recipe = ({recipeData}) => {
 
   const handleFavorite = () => {
     setIsFavorite(true);
+    // when click favorite button show notify from hotToast
     notify();
   };
 
@@ -20,7 +21,9 @@ const Recipe = ({recipeData}) => {
       <div className="relative">
         <img className="w-96" src={recipe_image} alt={recipeName} />
         <h3 className="font-bold text-2xl my-4">{recipeName}</h3>
+        {/* hot toast call  */}
         <Toaster />
+        {/* control favorite btn here  */}
         <button onClick={handleFavorite} disabled={isFavorite ? true : ""}>
           <img
             className="rounded-full w-16 absolute -top-4 -left-2 hover:outline outline-4 outline-white"

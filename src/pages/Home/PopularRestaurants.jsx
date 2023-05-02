@@ -14,6 +14,7 @@ const PopularRestaurants = () => {
         Popular Chinese Restaurants
       </h2>
 
+      {/* if data is not loaded Spinner is running then show restaurants data */}
       {loading ? (
         <LoaderSpinner />
       ) : (

@@ -13,6 +13,7 @@ const PopularRecipe = () => {
         Popular Chinese Recipe
       </h2>
 
+      {/* if data is not loaded Spinner is running then show chef recipe data */}
       {loading ? (
         <LoaderSpinner />
       ) : (

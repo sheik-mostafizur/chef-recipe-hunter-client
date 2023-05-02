@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ChefRecipes from "../pages/ChefRecipes";
 import ChefDetails from "../pages/ChefRecipes/ChefDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -27,11 +28,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/chef-recipes",
-    element: <ChefRecipes />,
+    element: (
+      <PrivateRoute>
+        <ChefRecipes />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: ":id",
-        element: <ChefDetails />,
+        element: (
+          <PrivateRoute>
+            <ChefDetails />
+          </PrivateRoute>
+        ),
         loader: async ({params}) =>
           fetch(
             `https://recipe-master-assignment.vercel.app/chef-recipes/${params.id}`

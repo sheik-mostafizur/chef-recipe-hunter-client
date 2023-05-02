@@ -6,6 +6,7 @@ const Restaurant = ({restaurantsData}) => {
   const [showMore, setShowMore] = useState(false);
 
   const handleShowMore = () => setShowMore(!showMore);
+
   return (
     <div key={id} className="rounded-lg shadow p-4 border border-primary">
       <img className="mx-auto rounded-lg" src={image_url} alt={name} />
@@ -19,6 +20,7 @@ const Restaurant = ({restaurantsData}) => {
         {location}
       </p>
       <p>
+        {/* description show more and less handle here */}
         <b>Description: </b>
         {showMore ? (
           <>
