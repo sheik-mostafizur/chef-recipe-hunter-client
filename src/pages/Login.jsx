@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Navbar from "../components/Navbar";
 import {Link, useNavigate} from "react-router-dom";
 import {uesAuthContext} from "../context/AuthContext";
+import Footer from "../components/Footer";
 
 const Login = () => {
   const {logInUser, logInUserWithGoogle, logInUserWithGitHub} =
@@ -46,7 +47,7 @@ const Login = () => {
     <>
       <Navbar />
 
-      <div className="max-w-screen-xl mx-auto px-4 h-screen flex items-center justify-center">
+      <div className="max-w-screen-xl mx-auto px-4 my-24 flex items-center justify-center">
         <div className="shadow border p-8 rounded-lg w-[450px]">
           <h2 className="font-bold text-2xl">Log In Your Account</h2>
           <div className="mt-4 flex items-center justify-center">
@@ -123,6 +124,8 @@ const Login = () => {
           </form>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

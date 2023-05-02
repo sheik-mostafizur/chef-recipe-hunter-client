@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {uesAuthContext} from "../context/AuthContext";
 import {updateProfile} from "@firebase/auth";
 import {auth} from "../firebase/firebase.config";
+import Footer from "../components/Footer";
 
 const Register = () => {
   const {createUser, logInUserWithGoogle, logInUserWithGitHub} =
@@ -61,7 +62,7 @@ const Register = () => {
     <>
       <Navbar />
 
-      <div className="max-w-screen-xl mx-auto px-4 h-screen flex items-center justify-center">
+      <div className="max-w-screen-xl mx-auto px-4 my-24 flex items-center justify-center">
         <div className="shadow border p-8 rounded-lg w-[450px]">
           <h2 className="font-bold text-2xl">Register Your Account</h2>
           <div className="mt-4 flex items-center justify-center">
@@ -166,6 +167,8 @@ const Register = () => {
           </form>
         </div>
       </div>
+
+      <Footer/>
     </>
   );
 };
