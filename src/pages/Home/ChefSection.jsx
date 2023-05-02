@@ -1,15 +1,21 @@
 import React, {useEffect, useState} from "react";
 import Chef from "./Chef";
+import LoaderSpinner from "../../components/LoaderSpinner";
 
 const ChefSection = () => {
   const [chefData, setChefData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const URL = "http://localhost:3000/chines-chef";
 
     fetch(URL)
       .then((res) => res.json())
-      .then((data) => setChefData(data))
+      .then((data) => {
+        setChefData(data);
+        setLoading(false);
+      })
       .catch((error) => console.log(error.message));
   }, []);
 
@@ -19,10 +25,14 @@ const ChefSection = () => {
         Top Chines Chef
       </h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {chefData &&
-          chefData.map((data) => <Chef key={data.id} chefData={data} />)}
-      </div>
+      {loading ? (
+        <LoaderSpinner />
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {chefData &&
+            chefData.map((data) => <Chef key={data.id} chefData={data} />)}
+        </div>
+      )}
     </div>
   );
 };
