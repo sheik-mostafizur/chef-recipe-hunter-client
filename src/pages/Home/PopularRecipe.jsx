@@ -1,22 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import LoaderSpinner from "../../components/LoaderSpinner";
+import useFetch from "./useFetch";
 
 const PopularRecipe = () => {
-  const [recipeData, setRecipeData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    const URL = "http://localhost:3000/popular-chines-recipe";
-
-    fetch(URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setRecipeData(data);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error.message));
-  }, []);
+  const {fetchedData: recipeData, loading} = useFetch(
+    "http://localhost:3000/popular-chines-recipe"
+  );
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 py-8 lg:py-16">

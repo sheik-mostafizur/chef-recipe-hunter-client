@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import Footer from "../../components/Footer";
 import ChefSection from "./ChefSection";
 import PopularRecipe from "./PopularRecipe";
+import PopularRestaurants from "./PopularRestaurants";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Banner />
       <ChefSection />
       <PopularRecipe />
+      <PopularRestaurants/>
       <Footer />
     </div>
   );
