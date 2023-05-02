@@ -16,7 +16,7 @@ const Chef = ({chefData}) => {
         src={chef_picture}
         alt={chef_name}
       />
-      <h3 className="font-bold text-2xl text-center">Martin Yan</h3>
+      <h3 className="font-bold text-2xl text-center">{chef_name}</h3>
       <div className="flex justify-between">
         <p>
           <img
