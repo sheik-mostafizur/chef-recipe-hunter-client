@@ -2,12 +2,17 @@ import React from "react";
 import YearExperience from "../../assets/icons/chef-hat.png";
 import NumbersRecipes from "../../assets/icons/recipe-book.png";
 import Like from "../../assets/icons/heart.png";
+import {Link} from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 const Chef = ({chefData}) => {
-  // eslint-disable-next-line react/prop-types
-  const {chef_picture, chef_name, years_of_experience, num_of_recipes, likes} =
-    chefData;
+  const {
+    id,
+    chef_picture,
+    chef_name,
+    years_of_experience,
+    num_of_recipes,
+    likes,
+  } = chefData;
 
   return (
     <div className="shadow rounded border border-primary px-6 py-8 space-y-5">
@@ -24,7 +29,7 @@ const Chef = ({chefData}) => {
             src={YearExperience}
             alt="Years of experience"
           />
-          <span>{years_of_experience}</span> Years
+          <b>{years_of_experience}</b> Years
         </p>
         <p>
           <img
@@ -32,7 +37,7 @@ const Chef = ({chefData}) => {
             src={NumbersRecipes}
             alt="Numbers of recipes"
           />
-          <span>{num_of_recipes}</span> recipes
+          <b>{num_of_recipes}</b> recipes
         </p>
         <p>
           <img
@@ -40,10 +45,14 @@ const Chef = ({chefData}) => {
             src={Like}
             alt="Numbers of Likes"
           />
-          <span>{likes}</span> Likes
+          <b>{likes}</b> Likes
         </p>
       </div>
-      <button className="btn-primary w-full">View Recipes</button>
+      <div>
+        <Link to={`/chef-recipes/${id}`}>
+          <button className="btn-primary w-full">View Recipes</button>
+        </Link>
+      </div>
     </div>
   );
 };

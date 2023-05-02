@@ -11,13 +11,14 @@ import {
   gitHubProvider,
   googleProvider,
 } from "../firebase/firebase.config";
+import LoaderSpinner from "../components/LoaderSpinner";
+import Logo from "../assets/logo.png";
 
 const UserContext = createContext({});
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 export const uesAuthContext = () => useContext(UserContext);
 
-// eslint-disable-next-line react/prop-types
 const AuthContext = ({children}) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -57,7 +58,16 @@ const AuthContext = ({children}) => {
   };
 
   return (
-    <UserContext.Provider value={userInfo}>{children}</UserContext.Provider>
+    <UserContext.Provider value={userInfo}>
+      {loading ? (
+        <div className="h-screen flex flex-col justify-center items-center">
+          <img className="w-48" src={Logo} alt="Logo" />
+          <LoaderSpinner />
+        </div>
+      ) : (
+        children
+      )}
+    </UserContext.Provider>
   );
 };
 
