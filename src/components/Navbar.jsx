@@ -6,6 +6,7 @@ import {uesAuthContext} from "../context/AuthContext";
 const Navbar = () => {
   const {user, logOutUser} = uesAuthContext();
   const [toggleNav, setToggleNav] = useState(false);
+  const [toggleProfilePic, setToggleProfilePic] = useState(false);
 
   const handleLogout = () => {
     logOutUser()
@@ -27,24 +28,41 @@ const Navbar = () => {
             RecipeMaster
           </span>
         </Link>
-        <div className="flex md:order-2">
+
+        <div className="flex md:order-2 relative">
           {user && (
             <img
-              className="w-10 h-10 me-3 shadow rounded-full border border-primary p-[3px]"
+              onClick={() => setToggleProfilePic(!toggleProfilePic)}
+              className="cursor-pointer w-10 h-10 me-3 shadow rounded-full border border-primary p-[3px]"
               src={user?.photoURL}
               alt={user?.displayName}
               title={user?.displayName}
             />
           )}
           {user ? (
-            <button onClick={handleLogout} className="btn-primary">
-              Logout
-            </button>
+            <div
+              className={`${
+                toggleProfilePic ? "" : "hidden"
+              } absolute right-0 top-11 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
+              <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                <h3 className="font-bold">{user?.displayName}</h3>
+                <div className="font-medium truncate">{user?.email}</div>
+              </div>
+              <div className="py-2">
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                  Sign out
+                </button>
+              </div>
+            </div>
           ) : (
             <Link to="/login" className="btn-primary">
               Login
             </Link>
           )}
+
           <button
             onClick={() => setToggleNav(!toggleNav)}
             data-collapse-toggle="navbar-sticky"

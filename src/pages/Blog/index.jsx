@@ -11,7 +11,7 @@ const Blog = () => {
       <Navbar />
 
       <div className="h-60 bg-[#d5421525] flex flex-col items-center justify-center">
-        <h1 className="font-bold text-3xl lg:text-5xl mb-4 lg:mb-12">
+        <h1 className="font-bold text-center text-3xl lg:text-5xl mb-4 lg:mb-12">
           Do you want to download this blog?
         </h1>
 
