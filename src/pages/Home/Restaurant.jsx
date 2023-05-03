@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import LazyLoad from "react-lazy-load";
 
 const Restaurant = ({restaurantsData}) => {
   const {id, image_url, name, must_try, location, description} =
@@ -9,7 +10,9 @@ const Restaurant = ({restaurantsData}) => {
 
   return (
     <div key={id} className="rounded-lg shadow p-4 border border-primary">
-      <img className="mx-auto rounded-lg" src={image_url} alt={name} />
+      <LazyLoad>
+        <img className="mx-auto rounded-lg" src={image_url} alt={name} />
+      </LazyLoad>
       <h3 className="mt-3 font-bold text-2xl">{name}</h3>
       <p>
         <b>Must Try: </b>

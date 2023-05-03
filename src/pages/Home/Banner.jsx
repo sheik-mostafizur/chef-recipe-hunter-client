@@ -1,5 +1,6 @@
 import React from "react";
 import Chef from "../../assets/chef.png";
+import LazyLoad from "react-lazy-load";
 
 const Banner = () => {
   return (
@@ -39,7 +40,9 @@ const Banner = () => {
             </a>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img className="max-h-[700px]" src={Chef} alt="mockup" />
+            <LazyLoad>
+              <img className="max-h-[700px]" src={Chef} alt="mockup" />
+            </LazyLoad>
           </div>
         </div>
       </section>

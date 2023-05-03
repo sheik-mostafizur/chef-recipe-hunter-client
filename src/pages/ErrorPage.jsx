@@ -1,6 +1,7 @@
 import React from "react";
 import error404Image from "../assets/error404.png";
 import {Link} from "react-router-dom";
+import LazyLoad from "react-lazy-load";
 
 const ErrorPage = () => {
   return (
@@ -16,11 +17,13 @@ const ErrorPage = () => {
         </Link>
       </div>
       <div>
-        <img
-          className="w-full max-w-3xl"
-          src={error404Image}
-          alt="error 404 page"
-        />
+        <LazyLoad>
+          <img
+            className="w-full max-w-3xl"
+            src={error404Image}
+            alt="error 404 page"
+          />
+        </LazyLoad>
       </div>
     </div>
   );

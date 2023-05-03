@@ -3,6 +3,7 @@ import YearExperience from "../../assets/icons/chef-hat.png";
 import NumbersRecipes from "../../assets/icons/recipe-book.png";
 import Like from "../../assets/icons/heart.png";
 import {Link} from "react-router-dom";
+import LazyLoad from "react-lazy-load";
 
 const Chef = ({chefData}) => {
   const {
@@ -16,11 +17,13 @@ const Chef = ({chefData}) => {
 
   return (
     <div className="shadow rounded border border-primary px-6 py-8 space-y-5">
-      <img
-        className="w-48 h-48 mx-auto rounded-full outline outline-4 outline-primary"
-        src={chef_picture}
-        alt={chef_name}
-      />
+      <LazyLoad>
+        <img
+          className="w-48 h-48 mx-auto rounded-full outline outline-4 outline-primary"
+          src={chef_picture}
+          alt={chef_name}
+        />
+      </LazyLoad>
       <h3 className="font-bold text-2xl text-center">{chef_name}</h3>
       <div className="flex justify-between">
         <p>

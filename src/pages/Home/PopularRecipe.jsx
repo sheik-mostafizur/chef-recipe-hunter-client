@@ -1,6 +1,7 @@
 import React from "react";
 import LoaderSpinner from "../../components/LoaderSpinner";
 import useFetch from "./useFetch";
+import LazyLoad from "react-lazy-load";
 
 const PopularRecipe = () => {
   const {fetchedData: recipeData, loading} = useFetch(
@@ -23,11 +24,13 @@ const PopularRecipe = () => {
               <div
                 key={id}
                 className="rounded-lg shadow p-4 border border-primary">
-                <img
-                  className="mx-auto rounded-lg"
-                  src={image_url}
-                  alt={name}
-                />
+                <LazyLoad>
+                  <img
+                    className="mx-auto rounded-lg"
+                    src={image_url}
+                    alt={name}
+                  />
+                </LazyLoad>
                 <h3 className="mt-3 font-bold text-2xl text-center">{name}</h3>
               </div>
             ))}

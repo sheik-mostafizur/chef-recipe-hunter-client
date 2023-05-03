@@ -2,6 +2,7 @@ import React from "react";
 import YearExperience from "../../assets/icons/chef-hat.png";
 import NumbersRecipes from "../../assets/icons/recipe-book.png";
 import Like from "../../assets/icons/heart.png";
+import LazyLoad from "react-lazy-load";
 
 const Banner = ({chefRecipeData}) => {
   const {
@@ -51,11 +52,13 @@ const Banner = ({chefRecipeData}) => {
           </div>
         </div>
         <div className="lg:mt-0 lg:col-span-5 lg:flex">
-          <img
-            className="mx-auto max-h-[700px]"
-            src={chef_picture}
-            alt={chef_name}
-          />
+          <LazyLoad>
+            <img
+              className="mx-auto max-h-[700px]"
+              src={chef_picture}
+              alt={chef_name}
+            />
+          </LazyLoad>
         </div>
       </div>
     </section>

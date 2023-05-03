@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
 import Like from "../../assets/icons/heart.png";
 import LikeDisabled from "../../assets/icons/heart-disabled.png";
+import LazyLoad from "react-lazy-load";
 
 const Recipe = ({recipeData}) => {
   const {recipeName, recipe_image, ingredients, cookingMethod, rating} =
@@ -19,7 +20,9 @@ const Recipe = ({recipeData}) => {
   return (
     <div className="shadow px-4 py-8 my-6 bg-gray-100 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       <div className="relative">
-        <img className="w-96" src={recipe_image} alt={recipeName} />
+        <LazyLoad>
+          <img className="w-96" src={recipe_image} alt={recipeName} />
+        </LazyLoad>
         <h3 className="font-bold text-2xl my-4">{recipeName}</h3>
         {/* hot toast call  */}
         <Toaster />
