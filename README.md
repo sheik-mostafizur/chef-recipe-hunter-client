@@ -1,10 +1,10 @@
-# b7a10-chef-recipe-hunter-client-side-sheik-mostafizur
+# chef-recipe-hunter-client-side
 
 **Live Link:** [Goto Website!](https://recipe-master-526ae.web.app/)
 
-**Client Side:** [Goto Github!](https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-client-side-sheik-mostafizur.git)
+**Client Side:** [Goto Github!](https://github.com/sheik-mostafizur/chef-recipe-hunter-client.git)
 
-**Server Side:** [Goto Github!](https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-sheik-mostafizur.git)
+**Server Side:** [Goto Github!](https://github.com/sheik-mostafizur/chef-recipe-hunter-server.git)
 
 # ✨Recipe Master✨
 
